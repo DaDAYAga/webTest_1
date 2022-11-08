@@ -1,0 +1,922 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,
+center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+body {
+  line-height: 1;
+  
+}
+ol,ul {
+  list-style: none;
+}
+a:link {
+  text-decoration: none;
+}
+blockquote,q {
+  quotes: none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+    font-family: "微軟正黑體";
+}
+/* 共用區 */
+html {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #131e3c;
+    font-family: "微軟正黑體";
+    .bg {
+        width: 100%;
+        height: 100%;
+        background: url('../images/banner.png') no-repeat top center;
+        position: fixed;
+        top: 80px;
+        animation: banner 1.2s ease-in-out;
+        z-index: -999;
+    }
+    
+}
+/* header */
+header {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    background: white;
+    z-index: 1;
+    article {
+        max-width: 1130px;
+        height: 100%;
+        margin: 0px auto;
+        overflow: hidden;
+        /* LOGO */
+        .logo {
+            width: 285px;
+            height: 75px;
+            background: url('../images/logo.png') no-repeat;
+            background-size: 90%;
+            float: left;
+            margin-top: 5px;
+        }
+        /* 上選單 */
+        ul {
+            float: right;
+            text-align: center;
+            li {
+                float: left;
+                line-height: 80px;
+                a {
+                    color: #686868;
+                    font-size: 16px;
+                    padding: 30px 15px 30px 15px;
+                    &:hover {
+                        background: #c8ac8b;
+                        color: white;
+                        transition: 0.5s all;
+                    }
+                }
+            }
+        }
+        /* rwd選單按鈕 */
+        .rwdlistbt {
+            display: none;
+            width: 40px;
+            height: 30px;
+            margin: 25px 20px 0px 0px;
+            float: right;
+            background: transparent;
+            border-color: black;
+            border-width: 5px 0px 5px 0px;
+            outline: none;
+            cursor: pointer;
+            &:active {
+                transform: scale(1.2);
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                width: 40px;
+                height: 5px;
+                background: black;
+                margin: -2px 0px 0px -20px;
+            }
+        }        
+        /* 上選單動畫區 */
+        .visited1 .li1,.visited2 .li2,.visited3 .li3,.visited4 .li4 {
+            background: #c8ac8b;
+            color:white;
+        }
+    }
+    /* rwd選單 */
+    .rwdlist {
+        width: 40%;
+        height: 100%;
+        background: rgba(19,30,60,.8);
+        transition: 0.5s all;
+        text-align: center;
+        position: fixed;
+        right: 0px;
+        transform: translateX(110%);
+        a {
+            display: block;
+            color: white;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            border-bottom: dashed 1px;
+            &:active {
+                background: rgba(19,30,60,.5);
+            }
+        }
+        article {
+            margin-top: 20px;
+            text-align: left;
+            h2 {
+                color: rgb(214, 214, 214);
+                font-size: 18px;
+                margin: 10px 0px 0px 20px;
+            }
+            p {
+                color: rgb(214, 214, 214);
+                font-size: 13px;
+                line-height: 20px;
+                margin: 0px 20px;
+            }
+            span {
+                display: block;
+                font-size: 12px;
+                margin: 10px 20px 0px;
+                color: white;
+            }
+            @supports (-webkit-touch-callout: none) {
+                /* CSS specific to iOS devices */
+                p {
+                    line-height: 14px;
+                }
+            }
+        }
+    }
+    /* 左區 */
+    .leftside {
+        width: 43%;
+        height: 905px;
+        background: rgba(19,30,60,.8);
+        /* 文字 */
+        article {
+            width: 418px;
+            height: 150px;
+            float: right;
+            margin-top: 306px;
+            h1 {
+                font-size: 25px;
+                color: white;
+                letter-spacing: 1px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                animation: textfadeout 1s ease-out;
+            }
+            p {
+                font-size: 17px;
+                color: white;
+                line-height: 26px;
+                font-weight: lighter;
+                animation: textfadeout 1.5s ease-out
+            }
+        }
+    }    
+}
+.rwdslide .rwdlist {
+    transform: translateX(0%);
+}
+/* main */
+main {
+    width: 100%;
+    position: relative;
+    top: 985px;
+    /* 作品集 */
+    .portfolio {
+        width: 100%;
+        height: 570px;
+        background: white;
+        transition: 0.8s all;
+        /* FB按鈕 */
+        .fbbutton {
+            width: 300px;
+            height: 60px;
+            background: #0e2b7c;
+            position: absolute;
+            top: -60px;
+            right: 320px;
+            box-shadow: 0px -1px 3px black;
+            transition: 0.8s top;
+            outline: none;
+            border: none;
+            &::before {
+                content: "";
+                position: absolute;
+                right: 30px;
+                top: 25px;
+                width: 15px;
+                height: 10px;
+                background: url('../images/arrow.png') no-repeat;
+            }
+            p {
+                color: #d2d5e1;
+                line-height: 60px;
+                margin-left: 30px;
+            }
+            iframe {
+                height: 0px;
+                transition: 0.8s height;
+            }
+        }
+        /* 左區 */
+        .leftside2 {
+            width: 43%;
+            height: 570px;
+            background: rgba(200,172,139,0.2);
+            float: left;
+            position: relative;
+            left: -820px;
+            transition: 0.5s all;
+            /* 文字 */
+            article {
+                width: 305px;
+                height: 160px;
+                float: right;
+                margin: 180px 0px 0px 0px;
+                h2 {
+                    font-size: 25px;
+                    font-weight: bold;
+                    padding: 10px 0px;
+                }
+                li {
+                    line-height: 30px;
+                    font-size: 17px;
+                    position: relative;
+                    margin-left: 25px;
+                    opacity: 0;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        width: 10px;
+                        height: 10px;
+                        background: url('../images/portic.png');
+                        top: 10px;
+                        left: -20px;
+                    }
+                }
+            }
+        }
+        /* 右圖區 */
+        article {
+            max-width: 645px;
+            height: auto;
+            float: left;
+            margin: 45px 0px 0px 50px;
+            .img1,.img2,.img3,.img4 {
+                opacity: 0;
+                width: 306px;
+                height: 221px;
+                float: left;
+                margin: 0px 30px 25px 0px;
+            }
+            .img1 {
+                background: url('../images/img_01.png');
+            }
+            .img2 {
+                background: url('../images/img_02.png');
+                margin-right: 0px;
+            }
+            .img3 {
+                background: url('../images/img_03.png');
+                margin-bottom: 0px;
+            }
+            .img4 {
+                background: url('../images/img_04.png');
+                margin: 0px;
+            }
+        }
+    }
+    /* FB按鈕動畫 */
+    .slidetop .fbbutton {
+        top: -510px;
+        box-shadow: none;
+        &::before {
+            transform: scaleY(-1);
+        }
+        iframe {
+            height: 450px;
+        }
+    }
+    /* 左區動畫 */
+    .slide .leftside2 {
+        left: 0px;
+    }
+    /* 關於我們 */
+    .about {
+        max-width: 100%;
+        height: 985px;
+        background: #131e3c;
+        transition: 0.8s all;
+        article {
+            max-width: 500px;
+            height: 430px;
+            margin: 0px auto;
+            text-align: center;
+            h2 {
+                font-size: 42px;
+                color: white;
+                line-height: 100px;
+                margin: 0px 0px 50px 0px;
+            }
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                color: white;
+                margin: 0px 0px 15px 0px;
+                opacity: 0;
+            }
+            p {
+                color: white;
+                line-height: 22px;
+                font-weight: lighter;
+                opacity: 0;
+                padding: 0px 40px;
+            }
+        }
+        /* 第二部分 */
+        .aboutbg {
+            width: 100%;
+            height: 555px;
+            background: url('../images/aboutbg.png') top center;
+            article {
+                max-width: 500px;
+                height: 555px;
+                text-align: center;
+                h3 {
+                    padding: 240px 40px 15px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    opacity: 0;
+                }
+                h4 {
+                    color: black;
+                    font-weight: normal;
+                    opacity: 0;
+                    padding: 0px 40px
+                }
+            }
+        }
+    }
+    /* 主要內容 */
+    .target {
+        max-width: 100%;
+        height: 1750px;
+        /* 製作過程 */
+        .sec1 {
+            width: 100%;
+            height: 640px;
+            background: #f5f8ff;
+            article {
+                max-width: 1100px;
+                height: 640px;
+                margin: 0px auto;
+                text-align: center;
+                h1 {
+                    font-size: 42px;
+                    padding: 50px 0px 10px 0px;
+                }
+                .sec1_2{
+                    margin-top: 50px;
+                    width: 100%;
+                    height: 370px;
+                    text-align: left;
+                    p {
+                        font-size: 30px;
+                    }
+                    div {
+                        width: 310px;
+                        height: 340px;
+                        float: left;
+                        margin: 30px 85px 0px 0px;
+                        opacity: 0;
+                        &:last-child {
+                            margin-right: 0px;
+                        }
+                        p {
+                            margin: 240px 0px 20px 0px;
+                            color: #1f3f81;
+                            font-weight: bold;
+                        }
+                        span {
+                            font-weight: lighter;
+                        }
+                    }
+                    .img5 {
+                        background: url('../images/img_05.png') no-repeat;
+                    }
+                    .img6 {
+                        background: url('../images/img_06.png') no-repeat;
+                    }
+                    .img7 {
+                        background: url('../images/img_07.png') no-repeat;
+                    }
+                }
+            }
+        }
+        /* 優勢 */
+        .sec2 {
+            width: 100%;
+            height: 413px;
+            background: url('../images/targetbg.png') no-repeat top center;
+            /* 左區 */
+            .leftside3 {
+                width: 43%;
+                height: 413px;
+                background: rgba(19,30,60,.9);
+                float: left;
+                article {
+                    width: 410px;
+                    height: 70px;
+                    float: right;
+                    margin-top: 100px;
+                    p{
+                        font-size: 28px;
+                        color: white;
+                        font-weight: lighter;
+                        margin-bottom: 10px;
+                    }
+                    span {
+                        font-size: 22px;
+                        color: white;
+                        opacity: 0;                        
+                    }
+                }
+            }
+            /* 字區 */
+            article {
+                max-width: 560px;
+                height: 250px;
+                float: left;
+                margin: 100px 0px 0px 60px;
+                p {
+                    color: white;
+                    line-height: 30px;
+                    font-weight: lighter;
+                    opacity: 0;
+                }
+            }
+        }
+        /* 展示 */
+        .sec3 {
+            width: 100%;
+            height: 700px;
+            background: #f4eee8;
+            position: relative;
+            div {
+                width: 25%;
+                height: 349px;
+                float: left;
+                opacity: 0;
+                h2 {
+                    font-size: 28px;
+                    font-weight: bold;
+                    margin: 110px 0px 0px 70px;
+                }
+                h3 {
+                    font-size: 22px;
+                    color: #b88d5b;
+                    margin: 0px 0px 0px 70px;
+                }
+                p {
+                    margin: 25px 0px 0px 75px;
+                }
+                .a2,.a4 {
+                    font-size: 18px;
+                }
+                .a3 {
+                    font-size: 17px;
+                }
+            }
+            .img8 {
+                background: url('../images/img_08.png') no-repeat;
+                background-size: cover;
+            }
+            .img9 {
+                background: url('../images/img_09.png') no-repeat;
+                background-size: cover;
+            }
+            .img10 {
+                background: url('../images/img_10.png') no-repeat;
+                background-size: cover;
+            }
+            .img11 {
+                background: url('../images/img_11.png') no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+
+}
+/* 頁面隱藏動畫 */
+.fade1 .portfolio,.fade2 .about {
+    opacity: 0;
+}
+/* footer */
+footer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #131e3c;
+    top: 985px;
+    .foot {
+        max-width: 1100px;
+        height: auto;
+        margin: 0px auto;
+        /* 左區 */
+        article {
+            width: 600px;
+            height: 400px;
+            float: left;
+            h2 {
+                color: white;
+                font-size: 20px;
+                margin: 40px 0px 20px 0px;
+                &:first-child {
+                    margin-top: 70px;
+                }
+            }
+            p {
+                color: white;
+                line-height: 24px;
+                font-weight: lighter;
+                font-size: 17px;
+            }
+            span {
+                display: block;
+                color: #9ea9c5;
+                margin-top: 50px;
+            }
+        }
+    /* 右區 */
+        nav {
+            max-width: 460px;
+            height: 400px;
+            float: left;
+            h2 {
+                color: white;
+                font-size: 20px;
+                margin: 70px 0px 25px 0px;
+            }
+            div {
+                width: 230px;
+                height: 150px;
+                float: left;
+                p {
+                    color: white;
+                    font-weight: lighter;
+                    margin-bottom: 10px;
+                }
+                input {
+                    color: #a6b1cd;
+                    background: #131e3c;
+                    outline: none;
+                    border: solid 1px white;
+                    width: 210px;
+                    height: 32px;
+                    padding-left: 10px;
+                    margin-bottom: 10px;
+                }
+                textarea {
+                    width: 210px;
+                    height: 96px;
+                    outline: none;
+                    background: #131e3c;
+                    border: solid 1px white;
+                    color: #a6b1cd;
+                    padding: 10px 0px 0px 10px;
+                    resize: none;
+                }
+                button {
+                    width: 100px;
+                    height: 35px;
+                    float: right;
+                    margin: 5px 8px 0px 0px;
+                    font-size: 17px;
+                    letter-spacing: 6px;
+                    text-align: center;
+                    background: #e8c9a5;
+                    outline: none;
+                    border: none;
+                    padding-left: 15px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+/* 動畫區 */
+@keyframes banner {
+    0% {
+        opacity: 0;
+    }
+}
+@keyframes textfadeout {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+/* RWD */
+@media only screen and (max-width:1240px) {
+    main {
+        .portfolio {
+            .fbbutton {
+                right: 10px;
+            }
+            .leftside2 {
+                width: 30%;
+                article {
+                    width: 150px;
+                }
+            }
+            article {
+                margin: 45px 0px 0px 30px;
+            }
+        }
+        .target {
+            .sec1 {
+                display: flex;
+                .sec1_2 {
+                    .img5,.img6,.img7 {
+                        margin: 30px 15px;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                }
+            }
+            .sec2 {
+                article {
+                    margin: 100px 0px 0px 20px;
+                }
+            }
+        }
+    }
+    footer {
+        .foot {
+            article {
+                margin-left: 20px;
+                width: 500px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 1023px) {
+    header {
+        .leftside {
+            width: 45%;
+            article {
+                max-width: 320px;
+                height: 200px;
+            }
+        }
+    }
+    main {
+        .portfolio {
+            .leftside2 {
+                width: 25%;
+            }
+            article {
+                margin: 45px 0px 0px 10px;
+                width: 565px;
+                .img1,.img2,.img3,.img4 {
+                    width: 260px;
+                    height: 200px;
+                    background-size: cover;
+                }
+            }
+        }
+        .target {
+            .sec1 {
+                .sec1_2 {
+                    .img5,.img6,.img7 {
+                        width: 225px;
+                        height: 200px;
+                        background-size: cover;
+                    }
+                }
+            }
+            .sec2 {
+                .leftside3 {
+                    width: 20%;
+                    article {
+                        width: 125px;
+                    }
+                }
+            }
+            .sec3 {
+                .img8_1 h2,.img9_1 h2,.img10_1 h2,.img11_1 h2 {
+                    margin: 110px 0px 0px 40px;
+                }
+                .img8_1 h3,.img9_1 h3,.img10_1 h3,.img11_1 h3 {
+                    margin: 0px 0px 0px 40px;
+                }
+                .img8_1 p,.img9_1 p,.img10_1 p,.img11_1 p {
+                    margin: 25px 0px 0px 40px;
+                }
+            }
+        }
+    }
+    footer {
+        .foot {
+            article {
+                margin: 0px;
+                width: 308px;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px) {
+    header {
+        article {
+            overflow: none;
+            ul {
+                li {
+                    display: none;
+                }
+            }
+            .rwdlistbt {
+                display: block;
+            }
+        }
+        .leftside {
+            width: 50%;
+            height: 655px;
+            article {
+                max-width: 140px;
+                height: 250px;
+                float: none;
+                margin: 0px auto;
+                padding-top: 150px;
+                h1 {
+                }
+            }
+        }
+    }
+    main {
+        top: 735px;
+        .portfolio {
+            height: 1240px;
+            .leftside2 {
+                float: none;
+                width: 100%;
+                height: 200px;
+                article {
+                    float: none;
+                    margin: 0px auto;
+                    text-align: center;
+                    li:before {
+                        left: 0px;
+                    }
+                    h2 {
+                        padding: 30px 0px 10px 0px;
+                    }
+                }
+            }
+            article {
+                width: 100%;
+                height: 430px;
+                float: none;
+                margin: 20px auto 0px;
+                .img1,.img2,.img3,.img4 {
+                    float: none;
+                    margin: 40px auto 0px;
+                }                
+            }
+            .fbbutton {
+                display: none;
+            }
+        }
+        .target {
+            .sec1 {
+                display: block;
+                height: 1200px;
+                article {
+                    h1 {
+                        font-size: 38px;
+                    }
+                    .sec1_2 {
+                        height: 885px;
+                        margin-top: 30px;
+                        p {
+                            padding-left: 50px;
+                        }
+                        .img5,.img6,.img7 {
+                            float: none;
+                            margin: 20px auto 120px;
+                            width: 300px;
+                            &:last-child {
+                                margin-right: auto;
+                            }
+                            p {
+                                margin: 0px;
+                                padding: 230px 0px 0px 0px;
+                            }
+                        }
+                    }
+                }
+            }
+            .sec2 {
+                height: 520px;
+                background-size: cover;
+                .leftside3 {
+                    float: none;
+                    width: 100%;
+                    height: 120px;
+                    article {
+                        float: none;
+                        margin: 0px auto;
+                        padding-top: 15px;
+                        p {
+                            padding-top: 10px;
+                        }
+                    }
+                }
+                article {
+                    margin: 0px auto;
+                    float: none;
+                    .u1 {
+                        padding: 40px 40px 0px;
+                    }
+                    .u2,.u3,.u4,.u5,.u6,.u7 {
+                        padding: 0px 40px;
+                    }
+                }
+            }
+            .sec3 {
+                height: 1585px;
+                padding-top: 80px;
+                .img8,.img9,.img10,.img11 {
+                    float: none;
+                    width: 300px;
+                    height: 240px;
+                    margin: 0px auto;
+                }
+                .img8_1,.img9_1,.img10_1,.img11_1 {
+                    width: 340px;
+                    float: none;
+                    margin: 0px auto;
+                    height: 100px;
+                    h2 {
+                        margin: 30px 0px 0px 40px;
+                    }
+                }
+            }
+        }
+    }
+    footer {
+        top: 2370px;
+        .foot {
+            article {
+                display: none;
+            }
+            nav {
+                width: 100%;
+                max-width: 1000px;
+                float: none;
+                h2 {
+                    margin: 0px 0px 20px 0px;
+                    padding: 20px 0px 0px 60px;
+                }
+                div {
+                    float: none;
+                    margin: 0px auto;
+                }
+            }
+        }
+    }
+}
